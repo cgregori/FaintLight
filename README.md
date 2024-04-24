@@ -5,7 +5,7 @@ Pushed to Github in 2024
 
 Link: https://editor.p5js.org/cgregori/full/rr9l6epkT
 
-Please Note: Starting with a smaller window decreaes lag
+Please Note: Starting with a smaller window decreases lag
 
 More Info:
   - Ray Casting: https://en.wikipedia.org/wiki/Ray_casting
