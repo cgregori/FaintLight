@@ -2,6 +2,7 @@ class Particle {
   constructor(x, y, bounce) {
     this.pos = createVector(x, y);
     this.vel = createVector(0, 0);
+    this.col = color(random(255), random(255), random(255));
     this.rays = [];
     for (let a = 0; a < 360; a += 1.5) {
       this.rays.push(new Ray(this.pos, radians(a)));
@@ -12,7 +13,7 @@ class Particle {
   }
 
   update(x, y, walls) {
-    this.acc = createVector(x*width, y*height);
+    this.acc = createVector(x, y);
     this.acc.sub(this.pos);
     this.acc.setMag(1);
     this.vel.add(this.acc);
@@ -26,7 +27,7 @@ class Particle {
   }
 
   show() {
-    fill(255);
+    fill(this.col, 105);
     ellipse(this.pos.x, this.pos.y, 8);
   }
 
@@ -46,35 +47,9 @@ class Particle {
         } 
       }
       if(closestPt) {
-        stroke(255, 105);
+        stroke(this.col, 105);
         line(this.pos.x, this.pos.y, closestPt.x, closestPt.y);
       }
     });
   }
-  /***
-  bouncyLookAt(walls) {
-    this.rays.forEach(ray => {
-      let closestPt = null;
-      let min = Infinity;
-      for(let wall of walls) {
-        let pt = ray.cast(wall);
-        if(pt) {
-          let distance = p5.Vector.dist(this.pos, pt);
-          // Check for closest wall
-          if(distance < min) {
-            min = distance;
-            closestPt = pt;
-          }
-        } 
-      }
-      if(closestPt) {
-        //line(this.pos.x, this.pos.y, closestPt.x, closestPt.y);
-        let bounce = closestPt.copy().rotate(180);
-        stroke(color(closestPt.x, closestPt.y, bounce.x, 104));
-        //stroke(color(125, 50));
-        line(closestPt.x, closestPt.y, bounce.x, bounce.y);
-      }
-    });
-  }
-  ***/
 }
