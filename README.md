@@ -1,4 +1,4 @@
-# FaintLight
+# Moth Light Active Screensaver
 
 Created in 2021 with p5.js
 
